@@ -1,7 +1,10 @@
 PyROS
 =====
 
----
++++
+
+Confused ?
+----------
 
 rospy wants to put python inside ROS
 
@@ -9,19 +12,39 @@ rospy wants to put python inside ROS
 
 PyROS wants to get ROS inside Python
 
+
 ---
 
-But Why?
---------
+Overview
+========
 
-- A bit of context: GoCart
+- Why ?
+- python & ROS packaging (catkin_pip)
+- ROS is not everything (pyros_setup & rosimport)
+- Python is dynamic
+
+---
+
+So, Why?
+========
+
+A bit of context: GoCart
 
 ![](assets/img/GOCART120.3_UI.jpg)
 
-- Yujin Robot : a long time ROS contributor
-- Shoutout to the team and especially Daniel Stonier.
 
----
++++
+
+GoCart:
+- travels in a building
+- takes the elevator
+- interracts with people
+
+Thanks:
+- Yujin Robot : a long time ROS contributor
+- Gocart Team and especially Daniel Stonier.
+
++++
 
 But Why? really...
 ------------------
@@ -38,7 +61,7 @@ But Why? really...
 Mandatory Disclaimer
 --------------------
 
-- Cramming two years in 25 minutes
+- Cramming two years in 20 minutes
 
 - Some things will be left out
 
@@ -48,6 +71,8 @@ Mandatory Disclaimer
 
 Let the work begin...
 ---------------------
+
++++
 
 @snap[west span-50]
 @ul[spaced]
@@ -63,11 +88,13 @@ Let the work begin...
 @ulend
 @snapend
 
-@snap[east span-50]
++++
+
+@snap[west span-50]
 @ul[spaced]
 - Python (tests/docs included)
 - pick up a webserver library (Rostful from BenKehoe)
-- From code to a working webssite in a few days.
+- From code to a working website in a few days.
 @ulend
 @snapend
 
@@ -89,12 +116,15 @@ Let the work begin...
 ---
 
 Your customers care only about : 
-- what they can see
-- and how <span style="color:green">FAST</span>
-- you can <span style="color:green">CHANGE</span> it.
+- what they can see and
+- how <span style="color:green">FAST</span> you
+- can <span style="color:green">CHANGE</span> it.
 
 ---
-@title[Rebooting... from 2015]
+
+Rebooting... from 2015
+----------------------
+
 
 @snap[west span-45]
 @ul[spaced]
@@ -113,20 +143,22 @@ Your customers care only about :
 @ulend
 @snapend
 
----
-@title[Problem: change setup.py code]
++++
 
+Problem: change setup.py code
+-----------------------------
 
 @ul[spaced]
 - catkin will parse setup.py
-- setup.py must have a spcific form
+- setup.py must have sPeCiFiC code style.
 - setup.py must rely on distutils only.
 @ulend
 
 
----
-@title[One solution: catkin_pip]
++++
 
+One solution: [catkin_pip @fa[external-link]](http://github.com/pyros-dev/catkin_pip)
+------------------------
 
 @snap[west span-75]
 @ul[spaced]
@@ -137,12 +169,14 @@ Your customers care only about :
 @ulend
 @snapend
 
----
++++
 
 Ported many python packages to [ROS packages @fa[external-link]](http://repositories.ros.org/status_page/ros_indigo_default.html?q=alexv)
 
----
-@title[rostful evolves]
++++
+
+rostful evolves
+---------------
 
 With recent python packages in ROS, I can :
 
@@ -150,7 +184,7 @@ With recent python packages in ROS, I can :
 - `import flask` and build a usual flask WSGI app.
 
 
----
++++
 
 rostful debug UI
 ----------------
@@ -184,7 +218,7 @@ Problem: scale and isolation
 ### Load on the "ROS system" depends on the ingress traffic from outside the system
 ### BAAAAD...
 
----
++++
 
 One solution: split
 -------------------
@@ -194,7 +228,7 @@ One solution: split
 - Enter PyROS
 
 
----
++++
 
 PyROS
 -----
@@ -202,13 +236,15 @@ PyROS
 @snap[west span-75]
 @ul[spaced]
 - message-passing multiprocess system
-- interfaces between other systems
-- a software attempt at isolation
+- interfaces between distributed systems
+- a software attempt at isolation (via OS processes)
 @ulend
 @snapend
 
----
-@title[Problem: Initialization of processes ?]
++++
+
+Problem: Initialization
+-----------------------
 
 - ROS wants use to `source setup.bash`
 - But that changes the environment a lot
@@ -217,32 +253,69 @@ PyROS
 - => changes import behavior
 
 
----
-@title[One solution: python]
++++
 
-### setup.bash is a shell script. Python can do the same.
+One solution: python
+--------------------
 
-### Enter pyros_setup : ROS setup for python processes.
+- setup.bash is a shell script. Python can do the same.
+
++++
+
+pyros_setup
+-----------
+
+ROS setup for python processes.
 
 !()[asciinema]
 
+
++++
+
+Benefits
+--------
+
+- unittests working from anywhere.
+- virtual environments become viable again.
+
 ---
-@title[Problem: Maintenance is too heavy for one]
+
+Problem: Maintenance is too heavy for one
+-----------------------------------------
 
 - Not easy to find and recrut developers 
 - Need web backend AND robotics interest / background.
 - => so, do we really need a web server on the robot ?
 
----
-@title[One solution: Inversion of Control]
++++
 
-### Do not control the robot, control its information.
+One solution: Inversion of Control
+----------------------------------
+
+## Do not control the robot, control its information.
+
++++
 
 - The robot connects to a webserver (maintained by web developers)
 - The robot becomes a simple webclient.
 
 - pyros_msgs & pyros_schemas : web data validation for ROS
 - Transparent service for ROS developers
+
++++
+
+pyros_msgs
+----------
+
+
+
++++
+
+pyros_schemas
+-------------
+
+
+
 
 ---
 @title[feeling better, but why do I still feel lonely ?]
@@ -252,7 +325,7 @@ PyROS
 - I am still just a team of one...
 - Isn't there is a simpler way ?
 
----
++++
 @title[rosimport]
 
 - catkin is only useful to generate ROS message class
@@ -260,7 +333,7 @@ PyROS
 
 !()[asciinema]
 
----
++++
 
 - Bye build times.
 - Bye custom deb/ros/py packaging.
@@ -282,9 +355,17 @@ PyROS
 
 - pyros_setup: ROS setup at import time
 - rosimport: message generation at import time
-- dynamic robot development, from the repl.
+- more useful stuff...
 
+---
 
+Future ?
+--------
+
+- ROS development could be more interactive and accessible
+- PyROS could bridge more systems (MQTT, [WAMP @fa[external-link]](https://wamp-proto.org/), etc.)
+- FOSS depends on you.
+- Actually it is already yours, don't lose it.
 
 
 

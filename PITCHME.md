@@ -1,68 +1,70 @@
-# PyROS
+PyROS
+=====
 
 ---
 
-### rospy wants to get python inside ROS
+rospy wants to put python inside ROS
 
 ![](assets/img/presentation.png)
 
-### PyROS wants to get ROS inside Python
+PyROS wants to get ROS inside Python
 
 ---
-@title[But Why?]
 
-## A bit of context: GoCart
+But Why?
+--------
 
-![](assets/img/some pictures from Yujin)
+- A bit of context: GoCart
 
-### Yujin Robot : a long time ROS contributor
-### Shoutout to the team and especially Daniel Stonier.
+![](assets/img/GOCART120.3_UI.jpg)
+
+- Yujin Robot : a long time ROS contributor
+- Shoutout to the team and especially Daniel Stonier.
+
 ---
-@title[But Why? really...]
 
-## User Perspective
+But Why? really...
+------------------
+
+- User Perspective
 
 ![](assets/img/some diagram about User / robot interaction over network)
 
 
-## Find some simple way to show information to the user...
+- Find some simple way to show information to the user...
 
 ---
-@title[Mandatory Disclaimer]
 
-### Cramming two years in 25 minutes
+Mandatory Disclaimer
+--------------------
 
-### Some things will be left out
+- Cramming two years in 25 minutes
 
-### Beware : There be anachronisms
+- Some things will be left out
+
+- Beware : There be anachronisms
 
 ---
-@title[All hands on deck! work is starting...]
 
+Let the work begin...
+---------------------
 
 @snap[west span-50]
-@ul[spaced text-white]
-- C++
-- CMake
-- make/ninja
-- IDE/Text Editor
-- Test Framework
-- Libraries
-- System packages
-- CVS : svn/git
-- Documentation System
+@ul[spaced]
+- C++, CMake, make/ninja, IDE/Text Editor
+- CVS : svn/git, Test Framework, Libraries
+- System packages, Documentation System
 - ...
-- catkin
-- ROS packages
-- change the code !
-- source setup.bash !
+- catkin, ROS packages
+- `source setup.bash` !
+- change your code for ROS !
 - ...
 - And we wanna a webserver, really ?
 @ulend
 @snapend
 
 @snap[east span-50]
-@ul[spaced text-white]
+@ul[spaced]
 - Python (tests/docs included)
 - pick up a webserver library (Rostful from BenKehoe)
 - From code to a working webssite in a few days.
@@ -81,12 +83,15 @@
 @snapend
 
 @snap[east span-50]
-![](assets/ProgLangTri.png)
+![](assets/img/ProgLangTri.png)
 @snapend
 
 ---
 
-## Your customers care only about how fast can you change what they can see
+Your customers care only about : 
+- what they can see
+- and how <span style="color:green">FAST</span>
+- you can <span style="color:green">CHANGE</span> it.
 
 ---
 @title[Rebooting... from 2015]
@@ -134,35 +139,39 @@
 
 ---
 
-### Ported many python packages to [ROS packages @fa[external-link]](http://repositories.ros.org/status_page/ros_indigo_default.html?q=alexv)
+Ported many python packages to [ROS packages @fa[external-link]](http://repositories.ros.org/status_page/ros_indigo_default.html?q=alexv)
 
 ---
 @title[rostful evolves]
 
-### With standard packages in ROS, I can turn rostful into a 'standard' python package.
+With recent python packages in ROS, I can :
 
-### Import Flask and build on top, just as a usual flask developer would.
-
-
----
-@title[rostful debug UI]
-
-### Speed up changes and evolution, quickly build a debug web interface (jquery).
+- turn rostful into a 'standard' python package.
+- `import flask` and build a usual flask WSGI app.
 
 
 ---
-@title[Little break : self-reflection time]
 
+rostful debug UI
+----------------
 
-### There are many way to package code for ROS.
-
-### Different ways match different usecases
-
-### Want to mention ros1_template, might be useful when starting a ros package...
+Speed up changes and evolution, quickly build a debug web interface (jquery).
 
 
 ---
-@title[Problem: scale and isolation]
+
+Little break : self-reflection time
+-----------------------------------
+
+- There are many way to package code for ROS.
+- Different ways match different usecases
+- Quick mention of [ros1_template @fa[external-link]](http://github.com/pyros-dev/ros1_template), might be useful when starting ROS development...
+
+
+---
+
+Problem: scale and isolation
+----------------------------
 
 @snap[west span-75]
 @ul[spaced]
@@ -176,20 +185,22 @@
 ### BAAAAD...
 
 ---
-@title[One solution: split]
 
-### Web framework is useful for handling web and random traffic
+One solution: split
+-------------------
 
-### ROS is quite sensitive and must be kept safe and sound.
-
-### Enter PyROS
+- Web framework is useful for handling web and random traffic
+- ROS is quite sensitive and must be kept safe and sound.
+- Enter PyROS
 
 
 ---
-@title[PyROS]
+
+PyROS
+-----
 
 @snap[west span-75]
-@ul[spaced text-white]
+@ul[spaced]
 - message-passing multiprocess system
 - interfaces between other systems
 - a software attempt at isolation
@@ -218,9 +229,9 @@
 ---
 @title[Problem: Maintenance is too heavy for one]
 
-### Not easy to find and recrut developers 
-### Need web backend AND robotics interest / background.
-### => so, do we really need a web server on the robot ?
+- Not easy to find and recrut developers 
+- Need web backend AND robotics interest / background.
+- => so, do we really need a web server on the robot ?
 
 ---
 @title[One solution: Inversion of Control]
@@ -249,7 +260,35 @@
 
 !()[asciinema]
 
-## Bye bye
-- build times.
-- complex ros/python packaging.
+---
+
+- Bye build times.
+- Bye custom deb/ros/py packaging.
+- Hello python
+
+---
+
+Review
+------
+
+- C++ optimizes runtime
+- Python optimizes devtime
+- Use the right tool for the job
+
+---
+
+PyROS
+-----
+
+- pyros_setup: ROS setup at import time
+- rosimport: message generation at import time
+- dynamic robot development, from the repl.
+
+
+
+
+
+
+
+
 

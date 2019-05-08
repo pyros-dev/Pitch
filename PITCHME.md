@@ -1,10 +1,12 @@
-#PyROS
+PyROS
+=====
 
 ---
 
 @snap[north]
 
-##Confused ?
+Confused ?
+----------
 
 Different perspectives:
 
@@ -13,23 +15,22 @@ Different perspectives:
 @snap[west span-50]
 @ul[spaced]
 - rospy wants to put python inside ROS
-
-a.k.a 'Python as an afterthought'
+- a.k.a 'Python as an afterthought'
 @ulend
 @snapend
 
 @snap[east span-50]
 @ul[spaced]
 - PyROS wants to get ROS inside Python
-
-a.k.a Use the right tool for the right job
+- a.k.a Use the right tool for the right job
 @ulend
 @snapend
 
 
 ---
 
-##Overview
+Overview
+--------
 
 - Why ?
 - python & ROS packaging (catkin_pip)
@@ -41,7 +42,8 @@ a.k.a Use the right tool for the right job
 
 @snap[north-west]
 
-##So, Why?
+So, Why?
+--------
 
 @snapend
 
@@ -58,6 +60,8 @@ A bit of context: GoCart
 
 @snap[west span-50]
 GoCart:
+-------
+
 @ul[spaced]
 - travels in a building
 - takes the elevator
@@ -119,26 +123,32 @@ Let the work begin...
 
 +++
 
+@snap[span-100]
 @ul[spaced]
-@snap[north span-100]
 - Python (tests/docs included)
 - pick up a webserver library (Rostful from BenKehoe)
 - From code to a working website in a few days.
+@ulend
 @snapend
 
 @snap[south]
 ![](assets/img/first_connect.png)
 @snapend
-@ulend
 
 ---
 
 @snap[north]
-##Python ?
+
+Python ?
+--------
+
 @snapend
 
 @snap[west span-50]
-## Programming Language Dilemma
+
+Programming Language Dilemma
+----------------------------
+
 @snapend
 
 @snap[east span-50]
@@ -149,7 +159,7 @@ Let the work begin...
 
 @ul[spaced]
 @snap[west span-50]
-Your customers care only about : 
+Your users care about : 
 - what they can see and
 - how <span style="color:green">FAST</span> you
 - can <span style="color:green">CHANGE</span> it.
@@ -160,10 +170,19 @@ Your customers care only about :
 @snapend
 @ulend
 
+Note:
+
+- replace CHANGE by FIX.
+- It is a matter of perspective...
+- what is the user trying to achieve ?
+
 ---
 
 @snap[north]
-##Rebooting... from 2015
+
+Rebooting... from 2015
+----------------------
+
 @snapend
 
 @snap[west span-45]
@@ -185,7 +204,12 @@ Your customers care only about :
 
 +++
 
-##Problem: change setup.py code
+@snap[north]
+
+Problem: change setup.py code
+-----------------------------
+
+@snapend
 
 @ul[spaced]
 - catkin will parse setup.py
@@ -197,7 +221,10 @@ Your customers care only about :
 +++
 
 @snap[north]
-##One solution: [catkin_pip @fa[external-link]](http://github.com/pyros-dev/catkin_pip)
+
+One solution: [catkin_pip @fa[external-link]](http://github.com/pyros-dev/catkin_pip)
+---------------------------------------------
+
 @snapend
 
 @snap[west]
@@ -211,7 +238,17 @@ Your customers care only about :
 
 +++
 
-Ported many python packages to [ROS packages @fa[external-link]](http://repositories.ros.org/status_page/ros_indigo_default.html?q=alexv)
+Porting
+-------
+
+With catkin-pip, I ported many python packages to [ROS packages @fa[external-link]](http://repositories.ros.org/status_page/ros_indigo_default.html?q=alexv)
+
+@ul[spaced]
+- Using Third Party Release workflow.
+- Without modifying the oringal python source.
+- for indigo, jade
+@ulend
+
 
 +++
 
@@ -266,7 +303,10 @@ Note:
 ---
 
 @snap[north]
-##Problem: scale and isolation
+
+Problem: scale and isolation
+----------------------------
+
 @snapend
 
 @snap[west span-50]
@@ -320,7 +360,9 @@ Note:
 +++
 
 @snap[north]
-##Problem: Initialization
+
+Problem: Initialization
+-----------------------
 @snapend
 
 @ul[spaced]
@@ -335,7 +377,9 @@ Note:
 +++
 
 @snap[north]
-##One solution: python
+
+One solution: Python
+--------------------
 @snapend
 
 @ul[spaced]
@@ -347,7 +391,10 @@ Python can do the same.
 +++
 
 @snap[north]
-##pyros_setup
+
+pyros_setup
+-----------
+
 @snapend
 
 ROS setup for python processes.
@@ -360,16 +407,26 @@ Note:
 
 +++
 
-##Benefits
+Benefits
+--------
 
 @ul[spaced]
 - unittests working from anywhere, no matter how you launch them.
-- virtual environments become workable again.
+- virtual environments become usable with ROS.
+- Some python packages do not need to be ported at all.
 @ulend
+
+Note:
+
+- pure python packages used for development
+- are installable with pip in virtualenv
+- can be used with ROS, without being installed "via ROS"
+- without any PYTHONPATH hack, just normal python workflow.
 
 +++
 
-##Downsides
+Downsides ?
+-----------
 
 @ul[spaced]
 One need a broader perspective:
@@ -385,7 +442,8 @@ Note:
 
 ---
 
-##Problem: Maintenance becomes too heavy for one
+Problem: Maintenance becomes too heavy for one
+----------------------------------------------
 
 @ul[spaced]
 - Not easy to find and recrut developers 
@@ -393,43 +451,65 @@ Note:
 - => do we really need a web server on the robot ?
 @ulend
 
+Note:
+
+- We need to port bit less packages than before
+- But more and more ROS distros are lining up
+- We should maintain all packages in all of them
+
 +++
 
 @snap[north]
-##One solution: Inversion of Control
+
+One solution: Inversion of Control
+----------------------------------
+
 @snapend
 
 ![](assets/img/full_connect_local.png)
 
 @snap[south]
-###Do not control the robot, control its information.
+Do not control the robot, control its information.
 @snapend
 
 +++
 
 @snap[north]
-##One solution: Inversion of Control
+
+One solution: Inversion of Control
+----------------------------------
+
 @snapend
 
 ![](assets/img/full_connect.png)
 
 @snap[south]
-###Do not control the robot, control its information.
+Do not control the robot, control its information.
 @snapend
 
 +++
 
+@snap[north]
+
+The Robot as a Web Client
+-------------------------
+
+@snapend
+
+
 @ul[spaced]
 - The robot connects to a webserver (maintained by web developers)
-- The robot becomes a simple webclient.
+- The interface code becomes very simple.
+- We can reuse existing python packages.
 
 - pyros_msgs & pyros_schemas : web data validation for ROS
-- Web Server proxied via local ROS service.
+- Local ROS services proxying REST API endpoints.
 @ulend
 
 +++
 
-##pyros_msgs
+pyros_msgs
+----------
 
 @ul[spaced]
 - [pyros_msgs @fa[external-link]](http://github.com/pyros-dev/pyros-msgs)
@@ -440,7 +520,8 @@ Note:
 
 +++
 
-##pyros_schemas
+pyros_schemas
+-------------
 
 @ul[spaced]
 - [pyros_schemas @fa[external-link]](http://github.com/pyros-dev/pyros-schemas)
@@ -449,9 +530,36 @@ Note:
 - relies on python/web packages.
 @ulend
 
+
++++
+
+Benefits
+--------
+
+@ul[spaced]
+- Web Interface with only two simple packages to run and maintain.
+@ulend
+
++++
+
+Downsides ?
+-----------
+
+@ul[spaced]
+- You depend on the surrounding network infrastructure.
+@ulend
+
+
+Note:
+
+- not only on the robot, but in the environment...
+- Note : It is the same for your mobile phone, nothing new.
+
+
 ---
 
-##Conclusion ?
+Conclusion ?
+------------
 
 @ul[spaced]
 - simpler ROS packaging for python code (catkin_pip)
@@ -464,24 +572,27 @@ Note:
 
 ---
 
-##A team of one
-
+A team of one
+-------------
 
 @ul[spaced]
-- Many, many, too many packages to [integrate into ROS @fa[external-link]](http://repositories.ros.org/status_page/ros_indigo_default.html?q=alexv).
-- Maintenance takes too much time...
+- Too many packages in too many ROS distros.
+- Maintenance takes too much time.
 - Isn't there is a simpler way ?
 @ulend
 
 ---
 
 @snap[north]
-##rosimport
+
+rosimport
+---------
+
 @snapend
 
 @snap[west span-50]
 @ul[spaced]
-- most of the usual ROS workflow has been automated into python.
+- part of the usual ROS development workflow has been automated into python.
 - actually, catkin is only useful to generate ROS message class.
 - but... python can do it on the fly ! at import time.
 @ulend
@@ -494,7 +605,10 @@ Note:
 +++
 
 @snap[north]
-##Consequences
+
+Consequences
+------------
+
 @snapend
 
 
@@ -506,7 +620,8 @@ Note:
 
 ---
 
-##Review
+Review
+------
 
 @ul[spaced]
 - C++ optimizes runtime
@@ -516,7 +631,8 @@ Note:
 
 ---
 
-##Be dynamic !
+Be dynamic !
+------------
 
 @ul[spaced]
 - rostful: web server for ROS.
@@ -528,10 +644,12 @@ Note:
 
 ---
 
-##Future ?
+Future ?
+--------
 
 @ul[spaced]
 - ROS-related development could be more interactive and accessible.
+- PyROS can probably be pure python code (no ROS packages)
 - PyROS could be simpler.
 - PyROS could bridge more systems (MQTT, [WAMP @fa[external-link]](https://wamp-proto.org/), etc.)
 - Free Software depends on you.

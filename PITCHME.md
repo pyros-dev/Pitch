@@ -5,8 +5,7 @@ PyROS
 
 @snap[north]
 
-Confused ?
-----------
+## Confused ?
 
 Different perspectives:
 
@@ -46,7 +45,7 @@ Note:
 
 @snap[north-west]
 
-@title[So, Why?]
+## So, Why?
 
 @snapend
 
@@ -164,8 +163,8 @@ Programming Language Dilemma
 @snap[west span-50]
 Your users care about : 
 - what they can see and
-- how <span style="color:green">FAST</span> you
-- can <span style="color:green">CHANGE</span> it.
+- how @color[green](FAST) you
+- can @color[green](CHANGE) it.
 @snapend
 
 @snap[east span-50]

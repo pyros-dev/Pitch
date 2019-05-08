@@ -1,12 +1,14 @@
-PyROS
-=====
+#PyROS
 
 ---
 
-Confused ?
-----------
+@snap[north]
+
+##Confused ?
 
 Different perspectives:
+
+@snapend
 
 @snap[west span-50]
 @ul[spaced]
@@ -23,10 +25,11 @@ a.k.a 'Python as an afterthought'
 a.k.a Use the right tool for the right job
 @ulend
 @snapend
+
+
 ---
 
-Overview
---------
+##Overview
 
 - Why ?
 - python & ROS packaging (catkin_pip)
@@ -36,10 +39,10 @@ Overview
 
 ---
 
-
 @snap[north-west]
-So, Why?
---------
+
+##So, Why?
+
 @snapend
 
 @snap[west span-50]
@@ -77,7 +80,7 @@ Note:
 But Why, really?
 ------------------
 
-User Perspective
+User Interface
 
 ![](assets/img/what_connect.png)
 
@@ -102,7 +105,6 @@ Let the work begin...
 
 +++
 
-@snap[west]
 @ul[spaced]
 - C++, CMake, make/ninja, IDE/Text Editor
 - CVS : svn/git, Test Framework, Libraries
@@ -114,25 +116,26 @@ Let the work begin...
 - ...
 - And we wanna a webserver, really ?
 @ulend
-@snapend
 
 +++
 
-@snap[north]
 @ul[spaced]
+@snap[north span-100]
 - Python (tests/docs included)
 - pick up a webserver library (Rostful from BenKehoe)
 - From code to a working website in a few days.
-@ulend
 @snapend
-
 
 @snap[south]
 ![](assets/img/first_connect.png)
 @snapend
+@ulend
 
 ---
-@title[Python ?]
+
+@snap[north]
+##Python ?
+@snapend
 
 @snap[west span-50]
 ## Programming Language Dilemma
@@ -143,6 +146,7 @@ Let the work begin...
 @snapend
 
 ---
+
 @ul[spaced]
 @snap[west span-50]
 Your customers care only about : 
@@ -152,16 +156,14 @@ Your customers care only about :
 @snapend
 
 @snap[east span-50]
-![](assets/img/ProgLangTri.png)
+![](assets/img/ProgLangUserEye.png)
 @snapend
 @ulend
 
 ---
 
-
 @snap[north]
-Rebooting... from 2015
-----------------------
+##Rebooting... from 2015
 @snapend
 
 @snap[west span-45]
@@ -183,21 +185,19 @@ Rebooting... from 2015
 
 +++
 
-Problem: change setup.py code
------------------------------
+##Problem: change setup.py code
 
 @ul[spaced]
 - catkin will parse setup.py
-- setup.py must have sPeCiFiC code style.
-- setup.py must rely on distutils only.
+- setup.py must have sPeCiFiC code style & format.
+- setup.py must rely on distutils ONLY.
 @ulend
 
 
 +++
 
 @snap[north]
-One solution: [catkin_pip @fa[external-link]](http://github.com/pyros-dev/catkin_pip)
-------------------------
+##One solution: [catkin_pip @fa[external-link]](http://github.com/pyros-dev/catkin_pip)
 @snapend
 
 @snap[west]
@@ -226,68 +226,70 @@ With recent python packages in ROS, I can :
 
 +++
 
-rostful debug UI
-----------------
+
+@snap[north]
+##rostful debug UI
+@snapend
 
 @snap[west]
 @ul[spaced]
 - This speeds up changes and evolution
 - I quickly build a debug web interface (jquery).
+
+![](assets/img/debug_connect.png)
 @ulend
 @snapend
 
 
-![](assets/img/debug_connect.png)
 
 
 ---
 
-Little break : self-reflection time
------------------------------------
+##Little break : self-reflection time
 
 - There are many way to package code for ROS.
 - Different ways match different usecases
 
 Quick mention of [ros1_template @fa[external-link]](http://github.com/pyros-dev/ros1_template), might be useful when starting ROS development...
 
---
+---
 
-Zen of Python
--------------
+##Zen of Python
 
-There should be one-- and preferably only one --obvious way to do it.
+There should be one (and preferably only one) obvious way to do it.
 
 
-Note: 
+Note:
 
 - Could we do better ? the question remains open.
 
 ---
 
-Problem: scale and isolation
-----------------------------
-
-@ul[spaced]
-@snap[west span-50]
-- 1 REST request
-- 1 Linux process
-- 1 ROS node
+@snap[north]
+##Problem: scale and isolation
 @snapend
 
-@snap[east span-50]
+@snap[west span-50]
 ![](assets/img/multi_connect.png)
 @snapend
 
+@snap[east span-50]
+@ul[spaced]
+- 1 REST request
+- 1 Linux process
+- 1 ROS node
+@ulend
+@snapend
 
 @snap[south span-100]
+@ul[spaced]
 Load on the "ROS system" depends on the ingress traffic from outside the system
-@snapend
 @ulend
+@snapend
 
 +++
 
-One solution: split
--------------------
+##One solution: split
 
 @ul[spaced]
 - Web framework is useful for handling web and random traffic
@@ -298,11 +300,10 @@ One solution: split
 +++
 
 @snap[north]
-PyROS
------
+##PyROS
 @snapend
 
-@snap[west span-75]
+@snap[west span-100]
 @ul[spaced]
 - message-passing multiprocess system
 - interfaces between distributed systems
@@ -318,13 +319,14 @@ Note:
 
 +++
 
-Problem: Initialization
------------------------
+@snap[north]
+##Problem: Initialization
+@snapend
 
 @ul[spaced]
 - ROS wants use to `source setup.bash`
 - But that changes the current environment (how ?)
-- Including PYTHONPATH
+- Modifies PYTHONPATH
 - => breaks vitualenvs
 - => changes import behavior
 @ulend
@@ -332,8 +334,9 @@ Problem: Initialization
 
 +++
 
-One solution: python
---------------------
+@snap[north]
+##One solution: python
+@snapend
 
 @ul[spaced]
 setup.bash is a shell script.
@@ -343,8 +346,9 @@ Python can do the same.
 
 +++
 
-pyros_setup
------------
+@snap[north]
+##pyros_setup
+@snapend
 
 ROS setup for python processes.
 
@@ -356,46 +360,62 @@ Note:
 
 +++
 
-Benefits
---------
+##Benefits
 
+@ul[spaced]
 - unittests working from anywhere, no matter how you launch them.
 - virtual environments become workable again.
+@ulend
 
 +++
 
-Downsides
----------
+##Downsides
 
+@ul[spaced]
 One need a broader perspective:
 - A script is a program.
 - Your system environment is the global state.
+@ulend
 
 Note:
+
 - a program is a script
 - written in assembler 
 - interpreted by your hardware.
 
 ---
 
-Problem: Maintenance becomes too heavy for one
------------------------------------------
+##Problem: Maintenance becomes too heavy for one
 
+@ul[spaced]
 - Not easy to find and recrut developers 
 - Need web backend AND robotics interest / background.
 - => do we really need a web server on the robot ?
+@ulend
 
 +++
 
-One solution: Inversion of Control
-----------------------------------
+@snap[north]
+##One solution: Inversion of Control
+@snapend
 
-## Do not control the robot, control its information.
-
-@ul[spaced]
 ![](assets/img/full_connect_local.png)
+
+@snap[south]
+###Do not control the robot, control its information.
+@snapend
+
++++
+
+@snap[north]
+##One solution: Inversion of Control
+@snapend
+
 ![](assets/img/full_connect.png)
-@ulend
+
+@snap[south]
+###Do not control the robot, control its information.
+@snapend
 
 +++
 
@@ -409,28 +429,29 @@ One solution: Inversion of Control
 
 +++
 
-pyros_msgs
-----------
+##pyros_msgs
 
+@ul[spaced]
 - [pyros_msgs @fa[external-link]](http://github.com/pyros-dev/pyros-msgs)
 - typechecks and converts between python types and ROS.
 - simple python package
 - custom typechecker but could rely on an existing one.
+@ulend
 
 +++
 
-pyros_schemas
--------------
+##pyros_schemas
 
+@ul[spaced]
 - [pyros_schemas @fa[external-link]](http://github.com/pyros-dev/pyros-schemas)
 - typechecks and converts between web data (json) to python types (dict).
 - simple python package
 - relies on python/web packages.
+@ulend
 
 ---
 
-Conclusion ?
-------------
+##Conclusion ?
 
 @ul[spaced]
 - simpler ROS packaging for python code (catkin_pip)
@@ -443,8 +464,7 @@ Conclusion ?
 
 ---
 
-A team of one
--------------
+##A team of one
 
 
 @ul[spaced]
@@ -456,8 +476,7 @@ A team of one
 ---
 
 @snap[north]
-rosimport
----------
+##rosimport
 @snapend
 
 @snap[west span-50]
@@ -474,6 +493,10 @@ rosimport
 
 +++
 
+@snap[north]
+##Consequences
+@snapend
+
 
 @ul[spaced]
 - Bye build times.
@@ -483,8 +506,7 @@ rosimport
 
 ---
 
-Review
-------
+##Review
 
 @ul[spaced]
 - C++ optimizes runtime
@@ -494,21 +516,19 @@ Review
 
 ---
 
-Be dynamic
-----------
+##Be dynamic !
 
 @ul[spaced]
 - rostful: web server for ROS.
 - pyros_setup: ROS setup at import time
 - rosimport: message generation at import time
 - [Dynamic dynamic_reconfigure @fa[external-link]](https://github.com/awesomebytes/ddynamic_reconfigure)
-- roslaunch to come ???
+- roslaunch ???
 @ulend
 
 ---
 
-Future ?
---------
+##Future ?
 
 @ul[spaced]
 - ROS-related development could be more interactive and accessible.
@@ -518,6 +538,11 @@ Future ?
 - It IS yours, thats what 'Free' means.
 @ulend
 
+Note:
+
+- Take ownership of free software you use.
+- Free Software Four Freedoms: use, study, share, improve it.
+- Right AND Duty.
 
 
 

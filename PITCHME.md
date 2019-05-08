@@ -28,8 +28,7 @@ Different perspectives:
 
 ---
 
-Overview
---------
+## Overview
 
 - Why ?
 - python & ROS packaging (catkin_pip)
@@ -61,8 +60,8 @@ A bit of context: GoCart
 
 
 @snap[west span-50]
-GoCart:
--------
+
+## GoCart:
 
 @ul[spaced]
 - travels in a building
@@ -83,8 +82,7 @@ Note:
 
 +++
 
-But Why, really?
-------------------
+## But Why, really?
 
 User Interface
 
@@ -95,8 +93,7 @@ Find some way to show information to the user...
 
 ---
 
-Mandatory Disclaimer
---------------------
+## Mandatory Disclaimer
 
 - Cramming two years in 20 minutes
 
@@ -106,8 +103,7 @@ Mandatory Disclaimer
 
 ---
 
-Let the work begin...
----------------------
+## Let the work begin...
 
 +++
 
@@ -141,15 +137,13 @@ Let the work begin...
 
 @snap[north]
 
-Python ?
---------
+## Python ?
 
 @snapend
 
 @snap[west span-50]
 
-Programming Language Dilemma
-----------------------------
+## Programming Language Dilemma
 
 @snapend
 
@@ -182,8 +176,7 @@ Note:
 
 @snap[north]
 
-Rebooting... from 2015
-----------------------
+## Rebooting... from 2015
 
 @snapend
 
@@ -208,8 +201,7 @@ Rebooting... from 2015
 
 @snap[north]
 
-Problem: change setup.py code
------------------------------
+## Problem: change setup.py code
 
 @snapend
 
@@ -224,8 +216,7 @@ Problem: change setup.py code
 
 @snap[north]
 
-One solution: [catkin_pip @fa[external-link]](http://github.com/pyros-dev/catkin_pip)
----------------------------------------------
+## One solution: [catkin_pip @fa[external-link]](http://github.com/pyros-dev/catkin_pip)
 
 @snapend
 
@@ -238,10 +229,13 @@ One solution: [catkin_pip @fa[external-link]](http://github.com/pyros-dev/catkin
 @ulend
 @snapend
 
+Note:
+
+- Also : https://github.com/locusrobotics/catkin_virtualenv
+
 +++
 
-Porting
--------
+## Porting
 
 With catkin-pip, I ported many python packages to [ROS packages @fa[external-link]](http://repositories.ros.org/status_page/ros_indigo_default.html?q=alexv)
 
@@ -254,8 +248,7 @@ With catkin-pip, I ported many python packages to [ROS packages @fa[external-lin
 
 +++
 
-rostful evolves
----------------
+## rostful evolves
 
 With recent python packages in ROS, I can :
 
@@ -267,7 +260,7 @@ With recent python packages in ROS, I can :
 
 
 @snap[north]
-##rostful debug UI
+## rostful debug UI
 @snapend
 
 @snap[west]
@@ -284,7 +277,7 @@ With recent python packages in ROS, I can :
 
 ---
 
-##Little break : self-reflection time
+## Little break : self-reflection time
 
 - There are many way to package code for ROS.
 - Different ways match different usecases
@@ -293,7 +286,7 @@ Quick mention of [ros1_template @fa[external-link]](http://github.com/pyros-dev/
 
 ---
 
-##Zen of Python
+## Zen of Python
 
 There should be one (and preferably only one) obvious way to do it.
 
@@ -306,8 +299,7 @@ Note:
 
 @snap[north]
 
-Problem: scale and isolation
-----------------------------
+## Problem: scale and isolation
 
 @snapend
 
@@ -331,7 +323,7 @@ Load on the "ROS system" depends on the ingress traffic from outside the system
 
 +++
 
-##One solution: split
+## One solution: split
 
 @ul[spaced]
 - Web framework is useful for handling web and random traffic
@@ -342,7 +334,7 @@ Load on the "ROS system" depends on the ingress traffic from outside the system
 +++
 
 @snap[north]
-##PyROS
+## PyROS
 @snapend
 
 @snap[west span-100]
@@ -363,8 +355,8 @@ Note:
 
 @snap[north]
 
-Problem: Initialization
------------------------
+## Problem: Initialization
+
 @snapend
 
 @ul[spaced]
@@ -380,8 +372,8 @@ Problem: Initialization
 
 @snap[north]
 
-One solution: Python
---------------------
+## One solution: Python
+
 @snapend
 
 @ul[spaced]
@@ -394,8 +386,8 @@ Python can do the same.
 
 @snap[north]
 
-pyros_setup
------------
+## pyros_setup
+
 
 @snapend
 
@@ -409,8 +401,7 @@ Note:
 
 +++
 
-Benefits
---------
+## Benefits
 
 @ul[spaced]
 - unittests working from anywhere, no matter how you launch them.
@@ -427,8 +418,7 @@ Note:
 
 +++
 
-Downsides ?
------------
+## Downsides ?
 
 @ul[spaced]
 One need a broader perspective:
@@ -444,8 +434,7 @@ Note:
 
 ---
 
-Problem: Maintenance becomes too heavy for one
-----------------------------------------------
+## Problem: Maintenance becomes too heavy for one
 
 @ul[spaced]
 - Not easy to find and recrut developers 
@@ -463,8 +452,7 @@ Note:
 
 @snap[north]
 
-One solution: Inversion of Control
-----------------------------------
+## One solution: Inversion of Control
 
 @snapend
 
@@ -474,12 +462,16 @@ One solution: Inversion of Control
 Do not control the robot, control its information.
 @snapend
 
+Note:
+- human not in direct control of the robot !
+- robot "decides by himself"
+- comparable to a human following a gps signal...
+
 +++
 
 @snap[north]
 
-One solution: Inversion of Control
-----------------------------------
+## One solution: Inversion of Control
 
 @snapend
 
@@ -493,8 +485,7 @@ Do not control the robot, control its information.
 
 @snap[north]
 
-The Robot as a Web Client
--------------------------
+## The Robot as a Web Client
 
 @snapend
 
@@ -510,8 +501,7 @@ The Robot as a Web Client
 
 +++
 
-pyros_msgs
-----------
+## pyros_msgs
 
 @ul[spaced]
 - [pyros_msgs @fa[external-link]](http://github.com/pyros-dev/pyros-msgs)
@@ -522,8 +512,7 @@ pyros_msgs
 
 +++
 
-pyros_schemas
--------------
+## pyros_schemas
 
 @ul[spaced]
 - [pyros_schemas @fa[external-link]](http://github.com/pyros-dev/pyros-schemas)
@@ -535,8 +524,7 @@ pyros_schemas
 
 +++
 
-Benefits
---------
+## Benefits
 
 @ul[spaced]
 - Web Interface with only two simple packages to run and maintain.
@@ -544,8 +532,7 @@ Benefits
 
 +++
 
-Downsides ?
------------
+## Downsides ?
 
 @ul[spaced]
 - You depend on the surrounding network infrastructure.
@@ -560,8 +547,7 @@ Note:
 
 ---
 
-Conclusion ?
-------------
+## Conclusion ?
 
 @ul[spaced]
 - simpler ROS packaging for python code (catkin_pip)
@@ -574,8 +560,7 @@ Conclusion ?
 
 ---
 
-A team of one
--------------
+## A team of one
 
 @ul[spaced]
 - Too many packages in too many ROS distros.
@@ -587,8 +572,7 @@ A team of one
 
 @snap[north]
 
-rosimport
----------
+## rosimport
 
 @snapend
 
@@ -608,8 +592,7 @@ rosimport
 
 @snap[north]
 
-Consequences
-------------
+## Consequences
 
 @snapend
 
@@ -622,8 +605,7 @@ Consequences
 
 ---
 
-Review
-------
+## Review
 
 @ul[spaced]
 - C++ optimizes runtime
@@ -633,8 +615,7 @@ Review
 
 ---
 
-Be dynamic !
-------------
+## Be dynamic !
 
 @ul[spaced]
 - rostful: web server for ROS.
@@ -646,8 +627,7 @@ Be dynamic !
 
 ---
 
-Future ?
---------
+## Future ?
 
 @ul[spaced]
 - ROS-related development could be more interactive and accessible.

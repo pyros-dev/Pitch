@@ -6,55 +6,68 @@ PyROS
 Confused ?
 ----------
 
-rospy wants to put python inside ROS
+Different perspectives:
 
-![](assets/img/presentation.png)
+- rospy wants to put python inside ROS
+a.k.a Python as an afterthought
 
-PyROS wants to get ROS inside Python
-
+- PyROS wants to get ROS inside Python
 
 ---
 
 Overview
-========
+--------
 
 - Why ?
 - python & ROS packaging (catkin_pip)
-- ROS is not everything (pyros_setup & rosimport)
-- Python is dynamic
+- 
+- ROS is not everything 
+- Python is dynamic (pyros_setup & rosimport)
 
 ---
 
 So, Why?
-========
+--------
 
+@snap[west span-50]
 A bit of context: GoCart
+@snapend
 
-![](assets/img/GOCART120.3_UI.jpg)
-
+@snap[east span-50]
+![](assets/img/GOCART120.3_UI_cropped.png)
+@snapend
 
 +++
 
+
+@snap[west span-50]
 GoCart:
 - travels in a building
 - takes the elevator
 - interracts with people
+@snapend
 
-Thanks:
+@snap[east span-50]
+![](assets/img/GOCART120.3_UI_cropped.png)
+@snapend
+
+
+Note:
+
 - Yujin Robot : a long time ROS contributor
 - Gocart Team and especially Daniel Stonier.
 
 +++
 
-But Why? really...
+But Why, really?
 ------------------
 
-- User Perspective
+User Perspective
 
-![](assets/img/some diagram about User / robot interaction over network)
+![](assets/img/what_connect.png)
 
 
-- Find some simple way to show information to the user...
+- Find some way to show information to the user...
 
 ---
 
@@ -74,7 +87,7 @@ Let the work begin...
 
 +++
 
-@snap[west span-50]
+@snap[west]
 @ul[spaced]
 - C++, CMake, make/ninja, IDE/Text Editor
 - CVS : svn/git, Test Framework, Libraries
@@ -90,13 +103,15 @@ Let the work begin...
 
 +++
 
-@snap[west span-50]
+@snap[west]
 @ul[spaced]
 - Python (tests/docs included)
 - pick up a webserver library (Rostful from BenKehoe)
 - From code to a working website in a few days.
 @ulend
 @snapend
+
+![](assets/img/first_connect.png)
 
 ---
 
@@ -122,9 +137,10 @@ Your customers care only about :
 
 ---
 
+@snap[north]
 Rebooting... from 2015
 ----------------------
-
+@snapend
 
 @snap[west span-45]
 @ul[spaced]
@@ -192,6 +208,10 @@ rostful debug UI
 Speed up changes and evolution, quickly build a debug web interface (jquery).
 
 
+
+![](assets/img/debug_connect.png)
+
+
 ---
 
 Little break : self-reflection time
@@ -199,15 +219,23 @@ Little break : self-reflection time
 
 - There are many way to package code for ROS.
 - Different ways match different usecases
-- Quick mention of [ros1_template @fa[external-link]](http://github.com/pyros-dev/ros1_template), might be useful when starting ROS development...
 
+Zen of Python:
+- There should be one-- and preferably only one --obvious way to do it.
+
+Quick mention of [ros1_template @fa[external-link]](http://github.com/pyros-dev/ros1_template), might be useful when starting ROS development...
+
+
+Note: 
+
+- Could we do better ? the question remains open.
 
 ---
 
 Problem: scale and isolation
 ----------------------------
 
-@snap[west span-75]
+@snap[west span-50]
 @ul[spaced]
 - 1 REST request
 - 1 Linux process
@@ -215,8 +243,14 @@ Problem: scale and isolation
 @ulend
 @snapend
 
-### Load on the "ROS system" depends on the ingress traffic from outside the system
-### BAAAAD...
+@snap[east span-50]
+![](assets/img/multi_connect.png)
+@snapend
+
+
+@snap[south]
+Load on the "ROS system" depends on the ingress traffic from outside the system
+@snapend
 
 +++
 
@@ -237,9 +271,15 @@ PyROS
 @ul[spaced]
 - message-passing multiprocess system
 - interfaces between distributed systems
-- a software attempt at isolation (via OS processes)
+- a software attempt at isolation (via network-aware OS processes)
+- physical (hardware) isolation possible if necessary.
 @ulend
 @snapend
+
+Note:
+
+- Started pure python development
+- Encountered quite a few annoying ROS quirks.
 
 +++
 
@@ -247,7 +287,7 @@ Problem: Initialization
 -----------------------
 
 - ROS wants use to `source setup.bash`
-- But that changes the environment a lot
+- But that changes the current environment (how ?)
 - Including PYTHONPATH
 - => breaks vitualenvs
 - => changes import behavior
@@ -275,12 +315,21 @@ ROS setup for python processes.
 Benefits
 --------
 
-- unittests working from anywhere.
-- virtual environments become viable again.
+- unittests working from anywhere, no matter the environment.
+- virtual environments become workable again.
+
+One downside : Need to 'understand' Python.
+- A script is a program.
+- Your system environment is the global state.
+
+Note:
+- a program is a script
+- written in assembler 
+- interpreted by your hardware.
 
 ---
 
-Problem: Maintenance is too heavy for one
+Problem: Maintenance becomes too heavy for one
 -----------------------------------------
 
 - Not easy to find and recrut developers 
@@ -293,6 +342,9 @@ One solution: Inversion of Control
 ----------------------------------
 
 ## Do not control the robot, control its information.
+
+![](assets/img/full_connect.png)
+
 
 +++
 
@@ -307,37 +359,66 @@ One solution: Inversion of Control
 pyros_msgs
 ----------
 
-
+- [pyros_msgs @fa[external-link]](http://github.com/pyros-dev/pyros-msgs)
+- typechecks and converts between python types and ROS.
+- simple python package
+- custom typechecker but could rely on an existing one.
 
 +++
 
 pyros_schemas
 -------------
 
+- [pyros_schemas @fa[external-link]](http://github.com/pyros-dev/pyros-schemas)
+- typechecks and converts between web data (json) to python types (dict).
+- simple python package
+- relies on python/web packages.
 
+---
+
+Conclusion ? Not Yet...
+-----------------------
+
+@ul[spaced]
+- simpler ROS packaging for python code (catkin_pip)
+- complex design to interface ROS with other systems (pyros)
+- simpler webapp to get a debug web interface on ROS (rostful)
+- simpler communication design for easier web integration (pure python)
+- I am still a team of one...
+@ulend
 
 
 ---
-@title[feeling better, but why do I still feel lonely ?]
 
-- Many, many, too many packages to integrate into ROS.
-- Maintenance takes a lot of time.
-- I am still just a team of one...
+A team of one
+-------------
+
+- Many, many, too many packages to [integrate into ROS @fa[external-link]](http://repositories.ros.org/status_page/ros_indigo_default.html?q=alexv).
+- Maintenance takes time...
 - Isn't there is a simpler way ?
 
 +++
-@title[rosimport]
 
-- catkin is only useful to generate ROS message class
-- python can do it on the fly, at import time.
+rosimport
+---------
 
-!()[asciinema]
+@snap[west span-50]
+@ul[spaced]
+- most of the usual ROS workflow has been automated into python.
+- actually, catkin is only useful to generate ROS message class.
+- but... python can do it on the fly ! at import time.
+@ulend
+@snapend
+
+@snap[east span-50]
+![](assets/img/rosimport_take1.svg)
+@snapend
 
 +++
 
 - Bye build times.
 - Bye custom deb/ros/py packaging.
-- Hello python
+- Hello python.
 
 ---
 
@@ -350,23 +431,26 @@ Review
 
 ---
 
-PyROS
------
+PyROS, the good parts
+---------------------
 
+- rostful: web server for ROS.
 - pyros_setup: ROS setup at import time
 - rosimport: message generation at import time
-- more useful stuff...
+- and more: [Dynamic dynamic_reconfigure @fa[external-link]](https://github.com/awesomebytes/ddynamic_reconfigure)
 
 ---
 
 Future ?
 --------
 
-- ROS development could be more interactive and accessible
+@ul[spaced]
+- ROS-related development could be more interactive and accessible.
+- PyROS could be simpler.
 - PyROS could bridge more systems (MQTT, [WAMP @fa[external-link]](https://wamp-proto.org/), etc.)
-- FOSS depends on you.
-- Actually it is already yours, don't lose it.
-
+- Free Software depends on you.
+- It IS yours, thats what 'Free' means.
+@ul[spaced]
 
 
 

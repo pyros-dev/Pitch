@@ -38,12 +38,15 @@ Overview
 - ROS is not everything 
 - Python is dynamic (pyros_setup & rosimport)
 
+Note:
+
+- TODO
+
 ---
 
 @snap[north-west]
 
-So, Why?
---------
+@title[So, Why?]
 
 @snapend
 

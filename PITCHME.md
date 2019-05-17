@@ -102,6 +102,9 @@ Find some way to show information to the user...
 
 ## A bit about me, at the time
 
+
+![](assets/img/what_connect.png)
+
 - 10 years development mostly C++
 - Background in Simulation and Gaming
 - Math/Physics & Network/Backend Tech
@@ -257,7 +260,7 @@ Note:
 
 @snap[north]
 
-## Problem: change setup.py code
+## Fear of Dependencies
 
 @snapend
 
@@ -271,7 +274,7 @@ Note:
 
 +++
 
-@snap[north span-75]
+@snap[north span-100]
 
 ## One solution: [catkin_pip @fa[external-link]](http://github.com/pyros-dev/catkin_pip)
 
@@ -294,12 +297,12 @@ Note:
 
 ## Benefits
 
-With catkin-pip, I ported many python packages to [ROS packages @fa[external-link]](http://repositories.ros.org/status_page/ros_indigo_default.html?q=alexv)
+With catkin-pip, I could:
 
 @ul[spaced]
-- Using Third Party Release workflow.
-- Without modifying the oringal python source.
-- for indigo, jade
+- port many python packages to [ROS packages @fa[external-link]](http://repositories.ros.org/status_page/ros_indigo_default.html?q=alexv)
+- use the oringal python source.
+- use Third Party Release workflow.
 @ulend
 
 +++
@@ -371,11 +374,10 @@ Note:
 
 
 @snap[north]
-
-## Problem: Environment Uncertainty
-
+## Uncertainty of Environment
 @snapend
 
+@snap[south]
 @ul[spaced]
 - ROS wants you to `source setup.bash`
 - But that modifies PYTHONPATH (how?)
@@ -384,9 +386,9 @@ Note:
 - => changes import behavior slightly
 - Behavior depends on HOW you run.
 @ulend
+@snapend
 
-Note : 
-
+Note:
 - many ways to run (shell, venv, roslaunch, IDE, etc.)
 - py2 and py3 have different import behavior, beware !
 
@@ -394,32 +396,27 @@ Note :
 
 @snap[north]
 
-## One solution: Python
+## One solution: pyros_setup
 
 @snapend
 
 @ul[spaced]
-setup.bash is a shell script.
-
-Python can do the same.
+- setup.bash is a shell script...
+- Python can do the same.
 @ulend
 
 +++
 
 @snap[north]
-
-## pyros_setup
-
-
+## Demo
 @snapend
 
 ROS setup for python processes.
 
-![](assets/img/pyros_setup_take1.svg)
+![](assets/img/pyros_setup_take1.svg?sanitize=true)
 
 Note:
-
-- Demo TODO ?
+- Live Demo ? steps TODOs
 
 +++
 
@@ -442,8 +439,7 @@ Note:
 
 ## Downsides ?
 
-Integration in code not ideal currently
-But it can be improved
+Integration in code not ideal.
 
 @ul[spaced]
 One need a broader perspective:
@@ -452,7 +448,7 @@ One need a broader perspective:
 @ulend
 
 Note:
-
+- integration code can be improved
 - a program is a script
 - written in assembler 
 - interpreted by your hardware.
@@ -476,8 +472,7 @@ Note:
 @snapend
 
 
-Note :
-
+Note:
 - Python way : venv, pip install, run.
 
 ---
@@ -501,7 +496,7 @@ Note:
 
 @snap[north]
 
-## Problems: scale and isolation
+## Doubt of Security or Scalability
 
 @snapend
 
@@ -604,7 +599,7 @@ Note:
 
 ---
 
-@snap[north]
+@snap[north span-100]
 
 ## Inversion of Control
 
@@ -623,7 +618,7 @@ Note:
 
 +++
 
-@snap[north]
+@snap[north span-100]
 
 ## Inversion of Control
 
@@ -637,7 +632,7 @@ Do not control the robot, control its information.
 
 +++
 
-@snap[north]
+@snap[north span-100]
 
 ## The Robot as a Web Client
 
@@ -690,7 +685,7 @@ Do not control the robot, control its information.
 
 @ul[spaced]
 - You depend on the surrounding network infrastructure.
-- But this let IT/Network people do what they do best.
+- But this lets IT/Network people do what they do best.
 @ulend
 
 
@@ -705,10 +700,10 @@ Note:
 ## Conclusion ?
 
 @ul[spaced]
-- simpler ROS packaging for python code (catkin_pip)
-- simple webapp to get a debug web interface on ROS (rostful)
-- middleware to interface ROS with other systems (pyros)
-- simple communication design for easier web integration (pure python)
+- ROS packaging via catkin_pip for python code
+- ROStful webapp to get a debug web interface
+- PyROS middleware to interface ROS with other systems
+- pure python design for easier web integration
 - I am still a team of one... too much to maintain.
 @ulend
 
@@ -743,7 +738,7 @@ Note:
 
 ---
 
-@snap[north]
+@snap[north span-100]
 
 ## import ROS => rosimport
 
@@ -821,10 +816,10 @@ Note:
 ## Future ?
 
 @ul[spaced]
-- ROS-related development could be more interactive and accessible.
-- PyROS can probably be pure python code (no ROS packages needed)
+- ROS-related development could be more accessible.
+- PyROS can probably be pure python code
 - PyROS could be simpler.
-- PyROS could bridge more systems (MQTT, [WAMP @fa[external-link]](https://wamp-proto.org/), etc.)
+- PyROS could bridge more systems (MQTT, [WAMP @fa[external-link]](https://wamp-proto.org/))
 - Free Software depends on you.
 - It IS yours, thats what 'Free' means.
 @ulend

@@ -408,12 +408,15 @@ Note:
 ## Demo
 @snapend
 
-ROS setup for python processes.
-
-[![asciicast](https://asciinema.org/a/241012.png)](https://asciinema.org/a/241012)
+[![asciicast](https://asciinema.org/a/241012.png?autoplay=1&theme=solarized-light)](https://asciinema.org/a/241012)
 
 Note:
-- Live Demo ? steps TODOs
+- mkvirtualenv
+- pip install pyros_setup
+- pyros_setup --pytest => config not setup ?
+- edit instance config
+- pyros_setup --pytest
+- Python repl, import pyros_setup, configure().activate(), import rosservice
 
 +++
 

@@ -410,7 +410,7 @@ Note:
 
 ROS setup for python processes.
 
-![](httpassets/img/pyros_setup_take1.svg?sanitize=true)
+[![asciicast](https://asciinema.org/a/241012.png)](https://asciinema.org/a/241012)
 
 Note:
 - Live Demo ? steps TODOs

@@ -1,6 +1,8 @@
 PyROS
 =====
 
+The product of my [ROS @fa[external-link]](ros.org) experience
+
 ---
 
 @snap[north]
@@ -21,24 +23,29 @@ Different perspectives:
 @snap[east span-50]
 @ul[spaced]
 - PyROS wants to get ROS inside Python
-- a.k.a Use the right tool for the right job
+- a.k.a Use the right tool for the job
 @ulend
 @snapend
 
 
 ---
 
-## Overview
+## Talkthrough
 
 - Why ?
-- python & ROS packaging (catkin_pip)
-- 
-- ROS is not everything 
-- Python is dynamic (pyros_setup & rosimport)
+- Prototyping
+- Fear of Dependencies
+- Uncertainty of Environment
+- Doubt of Security or Scalability
+- Inversion of Control
+- import ROS => rosimport
+- Be dynamic !
 
 Note:
 
-- TODO
+- unsettle devs
+- trigger some conversation.
+- open other perspectives
 
 ---
 
@@ -91,6 +98,31 @@ User Interface
 
 Find some way to show information to the user...
 
++++
+
+## A bit about me, at the time
+
+- 10 years development mostly C++
+- Background in Simulation and Gaming
+- Math/Physics & Network/Backend Tech
+
+---
+
+## Talkthrough
+
+- @color[grey](Why ?)
+- Prototyping
+- Fear of Dependencies
+- Uncertainty of Environment
+- Doubt of Security or Scalability
+- Inversion of Control
+- import ROS => rosimport
+- Be dynamic !
+
+Note:
+
+- TODO
+
 ---
 
 ## Mandatory Disclaimer
@@ -116,7 +148,7 @@ Find some way to show information to the user...
 - `source setup.bash` !
 - change your code for ROS !
 - ...
-- And we wanna a webserver, really ?
+- => And we wanna a webserver, really ?
 @ulend
 
 +++
@@ -132,6 +164,12 @@ Find some way to show information to the user...
 @snap[south]
 ![](assets/img/first_connect.png)
 @snapend
+
+
+Note:
+
+- Wait... what happened there ?
+- What is different when we use Python ?
 
 ---
 
@@ -156,7 +194,7 @@ Find some way to show information to the user...
 @ul[spaced]
 @snap[west span-50]
 Your users care about : 
-- what they can see and
+- what they can @color[green](SEE) and
 - how @color[green](FAST) you
 - can @color[green](CHANGE) it.
 @snapend
@@ -171,6 +209,24 @@ Note:
 - replace CHANGE by FIX.
 - It is a matter of perspective...
 - what is the user trying to achieve ?
+
+
+---
+
+## Talkthrough
+
+- @color[grey](Why ?)
+- @color[grey](Prototyping)
+- Fear of Dependencies
+- Uncertainty of Environment
+- Doubt of Security or Scalability
+- Inversion of Control
+- import ROS => rosimport
+- Be dynamic !
+
+Note:
+
+- TODO
 
 ---
 
@@ -209,12 +265,13 @@ Note:
 - catkin will parse setup.py
 - setup.py must have sPeCiFiC code style & format.
 - setup.py must rely on distutils ONLY.
+- would need to fork (and maintain) each dependency
 @ulend
 
 
 +++
 
-@snap[north]
+@snap[north span-75]
 
 ## One solution: [catkin_pip @fa[external-link]](http://github.com/pyros-dev/catkin_pip)
 
@@ -235,7 +292,7 @@ Note:
 
 +++
 
-## Porting
+## Benefits
 
 With catkin-pip, I ported many python packages to [ROS packages @fa[external-link]](http://repositories.ros.org/status_page/ros_indigo_default.html?q=alexv)
 
@@ -245,6 +302,21 @@ With catkin-pip, I ported many python packages to [ROS packages @fa[external-lin
 - for indigo, jade
 @ulend
 
++++
+
+## Downsides ?
+
+@ul[spaced]
+- Bridging workspace and virtualenv properly is not simple
+- Potentially complex changes for each pip versions
+- Bridging workspace and venv behavior not obvious
+- => By design workspaces stack, venv DO NOT.
+@ulend
+
+Note:
+
+- there is an email track regarding if venv should stack or not
+- it was decided that it was an obscure feature and not that useful.
 
 +++
 
@@ -252,27 +324,10 @@ With catkin-pip, I ported many python packages to [ROS packages @fa[external-lin
 
 With recent python packages in ROS, I can :
 
-- turn rostful into a 'standard' python package.
+- turn rostful into a 'standard' python package
 - `import flask` and build a usual flask WSGI app.
-- potentially use rostful for non-ROS things...
-
-+++
-
-
-@snap[north]
-## rostful debug UI
-@snapend
-
-@snap[west]
-@ul[spaced]
-- This speeds up changes and evolution
-- I quickly build a debug web interface (jquery).
-
-![](assets/img/debug_connect.png)
-@ulend
-@snapend
-
-
+- release it for ROS.
+- same for each dependency, no fork needed.
 
 
 ---
@@ -297,76 +352,43 @@ Note:
 
 ---
 
-@snap[north]
+## Talkthrough
 
-## Problem: scale and isolation
-
-@snapend
-
-@snap[west span-50]
-![](assets/img/multi_connect.png)
-@snapend
-
-@snap[east span-50]
-@ul[spaced]
-- 1 REST request
-- 1 Linux process
-- 1 ROS node
-@ulend
-@snapend
-
-@snap[south span-100]
-@ul[spaced]
-Load on the "ROS system" depends on the ingress traffic from outside the system
-@ulend
-@snapend
-
-+++
-
-## One solution: split
-
-@ul[spaced]
-- Web framework is useful for handling web and random traffic
-- ROS is quite sensitive and must be kept safe and sound.
-- Enter PyROS
-@ulend
-
-+++
-
-@snap[north]
-## PyROS
-@snapend
-
-@snap[west span-100]
-@ul[spaced]
-- message-passing multiprocess system
-- interfaces between distributed systems
-- a software attempt at isolation (via network-aware OS processes)
-- physical (hardware) isolation possible if necessary.
-@ulend
-@snapend
+- @color[grey](Why ?)
+- @color[grey](Prototyping)
+- @color[grey](Fear of Dependencies)
+- Uncertainty of Environment
+- Doubt of Security or Scalability
+- Inversion of Control
+- import ROS => rosimport
+- Be dynamic !
 
 Note:
 
-- Started pure python development
-- Encountered quite a few annoying ROS quirks.
+- TODO
 
-+++
+---
+
 
 @snap[north]
 
-## Problem: Initialization
+## Problem: Environment Uncertainty
 
 @snapend
 
 @ul[spaced]
-- ROS wants use to `source setup.bash`
-- But that changes the current environment (how ?)
-- Modifies PYTHONPATH
-- => breaks vitualenvs
-- => changes import behavior
+- ROS wants you to `source setup.bash`
+- But that modifies PYTHONPATH (how?)
+- => not visible in terminal
+- => breaks vitualenvs in subtle ways
+- => changes import behavior slightly
+- Behavior depends on HOW you run.
 @ulend
 
+Note : 
+
+- many ways to run (shell, venv, roslaunch, IDE, etc.)
+- py2 and py3 have different import behavior, beware !
 
 +++
 
@@ -420,6 +442,9 @@ Note:
 
 ## Downsides ?
 
+Integration in code not ideal currently
+But it can be improved
+
 @ul[spaced]
 One need a broader perspective:
 - A script is a program.
@@ -432,27 +457,156 @@ Note:
 - written in assembler 
 - interpreted by your hardware.
 
+
++++
+
+@snap[north]
+## rostful evolves
+@snapend
+
+@snap[west]
+@ul[spaced]
+- Rostful is now a simple python flask wsgi app.
+- Actually, we do not need ROS packages any longer.
+- Following the python way speeds up changes.
+- I could quickly build a debug web interface (jquery).
+
+![](assets/img/debug_connect.png)
+@ulend
+@snapend
+
+
+Note :
+
+- Python way : venv, pip install, run.
+
 ---
 
-## Problem: Maintenance becomes too heavy for one
+## Talkthrough
+
+- @color[grey](Why ?)
+- @color[grey](Prototyping)
+- @color[grey](Fear of Dependencies)
+- @color[grey](Uncertainty of Environment)
+- Doubt of Security or Scalability
+- Inversion of Control
+- import ROS => rosimport
+- Be dynamic !
+
+Note:
+
+- TODO
+
+---
+
+@snap[north]
+
+## Problems: scale and isolation
+
+@snapend
+
+@snap[west span-50]
+![](assets/img/multi_connect.png)
+@snapend
+
+@snap[east span-50]
+@ul[spaced]
+- 1 REST request
+- 1 Linux process
+- 1 ROS node
+@ulend
+@snapend
+
+@snap[south span-100]
+@ul[spaced]
+Load on the "ROS system" depends on the ingress traffic from outside the system
+@ulend
+@snapend
+
++++
+
+## One solution: split
 
 @ul[spaced]
-- Not easy to find and recrut developers 
-- Need web backend AND robotics interest / background.
+- Web framework is useful for handling web and random traffic
+- ROS is quite sensitive and must be kept safe and sound.
+- Enter PyROS
+@ulend
+
++++
+
+@snap[north]
+## PyROS
+@snapend
+
+@snap[west span-100]
+@ul[spaced]
+- message-passing multiprocess system
+- interfaces between distributed systems
+- a software attempt at isolation (via network-aware OS processes)
+- physical (hardware) isolation possible if necessary.
+@ulend
+@snapend
+
+Note:
+
+- Started pure python development
+- Encountered quite a few annoying ROS quirks.
+
+
++++
+
+## Benefits
+
+Separation of concern
+
+@ul[spaced]
+- python backend / frontend / ROS separated
+- only ROS parts need ROS packages
+- everything else is just standard python.
+- potentially interoperable with other python middleware.
+@ulend
+
+
++++
+
+## Downsides ?
+
+Maintenance is too heavy for one dev
+
+@ul[spaced]
+- Not easy to find and recrut developers
 - => do we really need a web server on the robot ?
 @ulend
 
 Note:
 
-- We need to port bit less packages than before
+- We need to port less packages than before
 - But more and more ROS distros are lining up
 - We should maintain all packages in all of them
 
-+++
+---
+
+## Talkthrough
+
+- @color[grey](Why ?)
+- @color[grey](Prototyping)
+- @color[grey](Fear of Dependencies)
+- @color[grey](Uncertainty of Environment)
+- @color[grey](Doubt of Security or Scalability)
+- Inversion of Control
+- import ROS => rosimport
+- Be dynamic !
+
+Note:
+
+- TODO
+
+---
 
 @snap[north]
 
-## One solution: Inversion of Control
+## Inversion of Control
 
 @snapend
 
@@ -471,7 +625,7 @@ Note:
 
 @snap[north]
 
-## One solution: Inversion of Control
+## Inversion of Control
 
 @snapend
 
@@ -536,13 +690,14 @@ Do not control the robot, control its information.
 
 @ul[spaced]
 - You depend on the surrounding network infrastructure.
+- But this let IT/Network people do what they do best.
 @ulend
 
 
 Note:
 
-- not only on the robot, but in the environment...
-- Note : It is the same for your mobile phone, nothing new.
+- Environment changes often when you are a mobile robot...
+- But it is the same for your mobile phone, nothing new.
 
 
 ---
@@ -551,10 +706,10 @@ Note:
 
 @ul[spaced]
 - simpler ROS packaging for python code (catkin_pip)
-- middleware to interface ROS with other systems (pyros)
 - simple webapp to get a debug web interface on ROS (rostful)
+- middleware to interface ROS with other systems (pyros)
 - simple communication design for easier web integration (pure python)
-- I am still a team of one...
+- I am still a team of one... too much to maintain.
 @ulend
 
 
@@ -568,11 +723,29 @@ Note:
 - Isn't there is a simpler way ?
 @ulend
 
+
+---
+
+## Talkthrough
+
+- @color[grey](Why ?)
+- @color[grey](Prototyping)
+- @color[grey](Fear of Dependencies)
+- @color[grey](Uncertainty of Environment)
+- @color[grey](Doubt of Security or Scalability)
+- @color[grey](Inversion of Control)
+- import ROS => rosimport
+- Be dynamic !
+
+Note:
+
+- TODO
+
 ---
 
 @snap[north]
 
-## rosimport
+## import ROS => rosimport
 
 @snapend
 
@@ -613,6 +786,24 @@ Note:
 - Use the right tool for the job
 @ulend
 
+
+---
+
+## Talkthrough
+
+- @color[grey](Why ?)
+- @color[grey](Prototyping)
+- @color[grey](Fear of Dependencies)
+- @color[grey](Uncertainty of Environment)
+- @color[grey](Doubt of Security or Scalability)
+- @color[grey](Inversion of Control)
+- @color[grey](import ROS => rosimport)
+- Be dynamic !
+
+Note:
+
+- TODO
+
 ---
 
 ## Be dynamic !
@@ -631,7 +822,7 @@ Note:
 
 @ul[spaced]
 - ROS-related development could be more interactive and accessible.
-- PyROS can probably be pure python code (no ROS packages)
+- PyROS can probably be pure python code (no ROS packages needed)
 - PyROS could be simpler.
 - PyROS could bridge more systems (MQTT, [WAMP @fa[external-link]](https://wamp-proto.org/), etc.)
 - Free Software depends on you.

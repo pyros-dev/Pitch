@@ -103,7 +103,7 @@ Find some way to show information to the user...
 ## A bit about me, at the time
 
 
-![](assets/img/what_connect.png)
+![](http://www.gravatar.com/avatar/4760982bce87813e29fbac9630499ca9)
 
 - 10 years development mostly C++
 - Background in Simulation and Gaming
@@ -146,7 +146,6 @@ Note:
 - C++, CMake, make/ninja, IDE/Text Editor
 - CVS : svn/git, Test Framework, Libraries
 - System packages, Documentation System
-- ...
 - catkin, ROS packages
 - `source setup.bash` !
 - change your code for ROS !
@@ -156,11 +155,12 @@ Note:
 
 +++
 
-@snap[span-100]
+@snap[north span-100]
 @ul[spaced]
 - Python (tests/docs included)
 - pick up a webserver library (Rostful from BenKehoe)
-- From code to a working website in a few days.
+- Working website.
+- wait... what ?
 @ulend
 @snapend
 
@@ -171,7 +171,7 @@ Note:
 
 Note:
 
-- Wait... what happened there ?
+- what happened there ?
 - What is different when we use Python ?
 
 ---
@@ -233,7 +233,7 @@ Note:
 
 ---
 
-@snap[north]
+@snap[north span-100]
 
 ## Rebooting... from 2015
 
@@ -258,7 +258,7 @@ Note:
 
 +++
 
-@snap[north]
+@snap[north span-100]
 
 ## Fear of Dependencies
 
@@ -310,9 +310,8 @@ With catkin-pip, I could:
 ## Downsides ?
 
 @ul[spaced]
-- Bridging workspace and virtualenv properly is not simple
-- Potentially complex changes for each pip versions
-- Bridging workspace and venv behavior not obvious
+- Bridging workspace and virtualenv properly is hard.
+- Potentially complex changes for each pip versions.
 - => By design workspaces stack, venv DO NOT.
 @ulend
 
@@ -330,7 +329,7 @@ With recent python packages in ROS, I can :
 - turn rostful into a 'standard' python package
 - `import flask` and build a usual flask WSGI app.
 - release it for ROS.
-- same for each dependency, no fork needed.
+- same for each dependency, *no fork needed*.
 
 
 ---
@@ -373,11 +372,11 @@ Note:
 ---
 
 
-@snap[north]
+@snap[north span-100]
 ## Uncertainty of Environment
 @snapend
 
-@snap[south]
+@snap[south span-100]
 @ul[spaced]
 - ROS wants you to `source setup.bash`
 - But that modifies PYTHONPATH (how?)
@@ -394,10 +393,8 @@ Note:
 
 +++
 
-@snap[north]
-
+@snap[north span-100]
 ## One solution: pyros_setup
-
 @snapend
 
 @ul[spaced]
@@ -413,7 +410,7 @@ Note:
 
 ROS setup for python processes.
 
-![](assets/img/pyros_setup_take1.svg?sanitize=true)
+![](httpassets/img/pyros_setup_take1.svg?sanitize=true)
 
 Note:
 - Live Demo ? steps TODOs

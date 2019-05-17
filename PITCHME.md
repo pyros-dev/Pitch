@@ -404,11 +404,10 @@ Note:
 
 +++
 
-@snap[north]
 ## Demo
-@snapend
 
-[![asciicast](https://asciinema.org/a/241012.png?autoplay=1&theme=solarized-light)](https://asciinema.org/a/241012)
+![](assets/img/pyros_setup_take1.svg)
+
 
 Note:
 - mkvirtualenv
@@ -494,7 +493,7 @@ Note:
 
 ---
 
-@snap[north]
+@snap[north span-100]
 
 ## Doubt of Security or Scalability
 

@@ -406,7 +406,7 @@ Note:
 
 ## Demo
 
-![](assets/img/pyros_setup_take1.svg)
+![](https://pyros-dev.github.io/Pitch/assets/img/pyros_setup_take1.svg)
 
 
 Note:
@@ -752,7 +752,7 @@ Note:
 @snapend
 
 @snap[east span-50]
-![](assets/img/rosimport_take1.svg)
+![](https://pyros-dev.github.io/Pitch/assets/img/rosimport_take1.svg)
 @snapend
 
 +++

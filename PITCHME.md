@@ -51,13 +51,10 @@ Note:
 
 ---
 
-@snap[north-west]
+@snap[west span-50]
 
 ## So, Why?
 
-@snapend
-
-@snap[west span-50]
 A bit of context: GoCart
 @snapend
 
@@ -74,7 +71,7 @@ A bit of context: GoCart
 
 @ul[spaced]
 - travels in a building
-- follows commands (users & devs)
+- follows commands
 - takes the elevator
 @ulend
 @snapend
@@ -396,7 +393,7 @@ Note:
 +++
 
 @snap[north span-100]
-## One solution: pyros_setup
+## One solution: [pyros_setup @fa[external-link]](http://github.com/pyros-dev/pyros_setup)
 @snapend
 
 @ul[spaced]
@@ -836,10 +833,8 @@ Note:
 
 ![](http://www.gravatar.com/avatar/026f399e97acffc543eabf24c035de4e)
 
-@snap[south]
 Contact me:
 asmodehn@gmail.com
-@snapend 
 
 
 

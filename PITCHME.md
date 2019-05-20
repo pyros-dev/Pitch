@@ -1,5 +1,4 @@
-PyROS
-=====
+#[](http://www.gravatar.com/avatar/026f399e97acffc543eabf24c035de4e) PyROS
 
 The product of my [ROS @fa[external-link]](ros.org) experience
 
@@ -833,11 +832,11 @@ Note:
 
 ## Thank you for your attention
 
-Questions ?
+[](http://www.gravatar.com/avatar/026f399e97acffc543eabf24c035de4e)
 
 @snap[south]
 Contact me:
-asmodehn _at_ gmail
+asmodehn@gmail.com
 @snapend 
 
 

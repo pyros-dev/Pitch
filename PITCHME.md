@@ -1,10 +1,6 @@
-@snap[west span-50]
-![](http://www.gravatar.com/avatar/026f399e97acffc543eabf24c035de4e)
-@snapend
+# PyROS
 
-@snap[east span-50]
-#PyROS
-@snapend 
+![](http://www.gravatar.com/avatar/026f399e97acffc543eabf24c035de4e) 
 
 The product of my [ROS @fa[external-link]](ros.org) experience
 

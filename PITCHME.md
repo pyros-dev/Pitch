@@ -5,7 +5,7 @@ The product of my [ROS @fa[external-link]](ros.org) experience
 
 ---
 
-@snap[north]
+@snap[north span-100]
 
 ## Confused ?
 
@@ -139,7 +139,7 @@ Note:
 
 ---
 
-## Let the work begin...
+## Start work...
 
 +++
 
@@ -155,6 +155,8 @@ Note:
 @ulend
 
 +++
+
+## Start again...
 
 @ul[spaced]
 - Python (tests/docs included)
@@ -267,9 +269,9 @@ Note:
 - catkin will parse setup.py
 - setup.py must have sPeCiFiC code style & format.
 - setup.py must rely on distutils ONLY.
-- would need to fork (and maintain) each dependency
+- Dev would need to fork (and maintain) **each dependency**.
+- Dev would need to package and release **each dependency**.
 @ulend
-
 
 +++
 
@@ -309,9 +311,9 @@ With catkin-pip, I could:
 ## Downsides ?
 
 @ul[spaced]
-- Bridging workspace and virtualenv properly is hard.
+- Bridging ROS workspaces and virtualenvs properly is hard.
 - Potentially complex changes for each pip versions.
-- => By design workspaces stack, venv DO NOT.
+- => By design workspaces stack, venvs DO NOT.
 @ulend
 
 Note:
@@ -325,9 +327,9 @@ Note:
 
 With recent python packages in ROS, I can :
 
-- turn rostful into a 'standard' python package
+- write rostful's `setup.py` the 'standard' way.
 - `import flask` and build a usual flask WSGI app.
-- release it for ROS.
+- package it and release it for ROS.
 - same for each dependency, *no fork needed*.
 
 
@@ -437,7 +439,7 @@ Note:
 
 ## Downsides ?
 
-Integration in code not ideal.
+Integration in code not ideal. could be improved...
 
 @ul[spaced]
 One need a broader perspective:
@@ -448,9 +450,8 @@ One need a broader perspective:
 Note:
 - integration code can be improved
 - a program is a script
-- written in assembler 
+- written in assembler
 - interpreted by your hardware.
-
 
 +++
 
@@ -835,7 +836,8 @@ Note:
 Questions ?
 
 @snap[south]
-Contact me: asmodehn _at_ gmail
+Contact me:
+asmodehn _at_ gmail
 @snapend 
 
 

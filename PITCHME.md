@@ -9,7 +9,7 @@ The product of my [ROS @fa[external-link]](ros.org) experience
 
 ## Confused ?
 
-Different perspectives:
+Two Different perspectives:
 
 @snapend
 
@@ -27,6 +27,9 @@ Different perspectives:
 @ulend
 @snapend
 
+Note:
+
+- rospy vs pyros
 
 ---
 
@@ -36,15 +39,13 @@ Different perspectives:
 - Prototyping
 - Fear of Dependencies
 - Uncertainty of Environment
-- Doubt of Security or Scalability
+- Doubt of Security/Scalability
 - Inversion of Control
-- import ROS => rosimport
+- Integration of Workflow
 - Be dynamic !
 
 Note:
-
-- unsettle devs
-- trigger some conversation.
+- challenge what we think we know
 - open other perspectives
 
 ---
@@ -72,8 +73,8 @@ A bit of context: GoCart
 
 @ul[spaced]
 - travels in a building
+- follows commands (users & devs)
 - takes the elevator
-- interracts with people
 @ulend
 @snapend
 
@@ -117,9 +118,9 @@ Find some way to show information to the user...
 - Prototyping
 - Fear of Dependencies
 - Uncertainty of Environment
-- Doubt of Security or Scalability
+- Doubt of Security/Scalability
 - Inversion of Control
-- import ROS => rosimport
+- Integration of Workflow
 - Be dynamic !
 
 Note:
@@ -155,14 +156,12 @@ Note:
 
 +++
 
-@snap[north span-100]
 @ul[spaced]
 - Python (tests/docs included)
 - pick up a webserver library (Rostful from BenKehoe)
 - Working website.
 - wait... what ?
 @ulend
-@snapend
 
 @snap[south]
 ![](assets/img/first_connect.png)
@@ -222,9 +221,9 @@ Note:
 - @color[grey](Prototyping)
 - Fear of Dependencies
 - Uncertainty of Environment
-- Doubt of Security or Scalability
+- Doubt of Security/Scalability
 - Inversion of Control
-- import ROS => rosimport
+- Integration of Workflow
 - Be dynamic !
 
 Note:
@@ -360,9 +359,9 @@ Note:
 - @color[grey](Prototyping)
 - @color[grey](Fear of Dependencies)
 - Uncertainty of Environment
-- Doubt of Security or Scalability
+- Doubt of Security/Scalability
 - Inversion of Control
-- import ROS => rosimport
+- Integration of Workflow
 - Be dynamic !
 
 Note:
@@ -459,7 +458,6 @@ Note:
 ## rostful evolves
 @snapend
 
-@snap[west]
 @ul[spaced]
 - Rostful is now a simple python flask wsgi app.
 - Actually, we do not need ROS packages any longer.
@@ -468,7 +466,6 @@ Note:
 
 ![](assets/img/debug_connect.png)
 @ulend
-@snapend
 
 
 Note:
@@ -482,9 +479,9 @@ Note:
 - @color[grey](Prototyping)
 - @color[grey](Fear of Dependencies)
 - @color[grey](Uncertainty of Environment)
-- Doubt of Security or Scalability
+- Doubt of Security/Scalability
 - Inversion of Control
-- import ROS => rosimport
+- Integration of Workflow
 - Be dynamic !
 
 Note:
@@ -495,7 +492,7 @@ Note:
 
 @snap[north span-100]
 
-## Doubt of Security or Scalability
+## Doubt of Security/Scalability
 
 @snapend
 
@@ -508,6 +505,7 @@ Note:
 - 1 REST request
 - 1 Linux process
 - 1 ROS node
+- HTTP accessible
 @ulend
 @snapend
 
@@ -587,9 +585,9 @@ Note:
 - @color[grey](Prototyping)
 - @color[grey](Fear of Dependencies)
 - @color[grey](Uncertainty of Environment)
-- @color[grey](Doubt of Security or Scalability)
+- @color[grey](Doubt of Security/Scalability)
 - Inversion of Control
-- import ROS => rosimport
+- Integration of Workflow
 - Be dynamic !
 
 Note:
@@ -726,9 +724,9 @@ Note:
 - @color[grey](Prototyping)
 - @color[grey](Fear of Dependencies)
 - @color[grey](Uncertainty of Environment)
-- @color[grey](Doubt of Security or Scalability)
+- @color[grey](Doubt of Security/Scalability)
 - @color[grey](Inversion of Control)
-- import ROS => rosimport
+- Integration of Workflow
 - Be dynamic !
 
 Note:
@@ -739,21 +737,22 @@ Note:
 
 @snap[north span-100]
 
-## import ROS => rosimport
+## Integration of Workflow
 
 @snapend
 
-@snap[west span-50]
 @ul[spaced]
-- part of the usual ROS development workflow has been automated into python.
-- actually, catkin is only useful to generate ROS message class.
-- but... python can do it on the fly ! at import time.
+- Actually, catkin is only useful to generate ROS message class.
+- but... Python could do it on the fly ! at import time.
+- yet another part of the ROS workflow automated in python.
 @ulend
-@snapend
 
-@snap[east span-50]
+
++++
+
+## Demo
+
 ![](https://pyros-dev.github.io/Pitch/assets/img/rosimport_take1.svg)
-@snapend
 
 +++
 
@@ -789,9 +788,9 @@ Note:
 - @color[grey](Prototyping)
 - @color[grey](Fear of Dependencies)
 - @color[grey](Uncertainty of Environment)
-- @color[grey](Doubt of Security or Scalability)
+- @color[grey](Doubt of Security/Scalability)
 - @color[grey](Inversion of Control)
-- @color[grey](import ROS => rosimport)
+- @color[grey](Integration of Workflow)
 - Be dynamic !
 
 Note:
@@ -803,7 +802,7 @@ Note:
 ## Be dynamic !
 
 @ul[spaced]
-- rostful: web server for ROS.
+- pyros: python-ROS multiprocess integration.
 - pyros_setup: ROS setup at import time
 - rosimport: message generation at import time
 - [Dynamic dynamic_reconfigure @fa[external-link]](https://github.com/awesomebytes/ddynamic_reconfigure)
@@ -829,7 +828,15 @@ Note:
 - Free Software Four Freedoms: use, study, share, improve it.
 - Right AND Duty.
 
+---
 
+## Thank you for your attention
+
+Questions ?
+
+@snap[south]
+Contact me: asmodehn _at_ gmail
+@snapend 
 
 
 

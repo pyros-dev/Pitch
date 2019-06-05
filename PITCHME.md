@@ -835,8 +835,10 @@ Note:
 
 Code at: https://github.com/pyros-dev
 
-Contact me:
-asmodehn@gmail.com
+Twitter: @asmodehn
+Github: asmodehn
+
+Contact me: asmodehn@gmail.com
 
 
 

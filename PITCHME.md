@@ -56,11 +56,19 @@ Note:
 ## So, Why?
 
 A bit of context: GoCart
+
+2015-2017 YujinRobot
 @snapend
 
 @snap[east span-50]
 ![](assets/img/GOCART120.3_UI_cropped.png)
 @snapend
+
+
+Note:
+
+- Yujin Robot : a long time ROS contributor
+- Gocart Team and especially Daniel Stonier.
 
 ---
 
@@ -79,12 +87,6 @@ A bit of context: GoCart
 @snap[east span-50]
 ![](assets/img/GOCART120.3_UI_cropped.png)
 @snapend
-
-
-Note:
-
-- Yujin Robot : a long time ROS contributor
-- Gocart Team and especially Daniel Stonier.
 
 +++
 
